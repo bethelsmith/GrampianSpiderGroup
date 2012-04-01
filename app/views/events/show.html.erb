@@ -1,0 +1,45 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <b>Date:</b>
+  <%= @event.date %>
+</p>
+
+<p>
+  <b>Time:</b>
+  <%= @event.time %>
+</p>
+
+<p>
+  <b>Location name:</b>
+  <%= @event.location_name %>
+</p>
+
+<p>
+  <b>Location description:</b>
+  <%= @event.location_description %>
+</p>
+
+<p>
+  <b>Grid ref:</b>
+  <%= @event.grid_ref %>
+</p>
+
+<p>
+  <b>Easting:</b>
+  <%= @event.easting %>
+</p>
+
+<p>
+  <b>Northing:</b>
+  <%= @event.northing %>
+</p>
+
+<p>
+  <b>Event description:</b>
+  <%= @event.event_description %>
+</p>
+
+
+<%= link_to 'Edit', edit_event_path(@event) %> |
+<%= link_to 'Back', events_path %>
