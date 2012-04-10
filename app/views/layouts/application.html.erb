@@ -1,14 +1,25 @@
 <!DOCTYPE html>
+
 <html>
-<head>
-  <title>GrampianSpiderGroup</title>
-  <%= stylesheet_link_tag    "application" %>
-  <%= javascript_include_tag "application" %>
-  <%= csrf_meta_tags %>
-</head>
-<body>
+  
+  <head>
+    
+    <title>Grampian Spider Group | <%= @title %></title>
+    <%= stylesheet_link_tag "style", :media => "all" %>
+    <%= csrf_meta_tag %>
+    
+  </head>
+  
+  <body>
+    
+    <div class="container">
+    <div class="header"></div>
+    <div class="logo"><%= image_tag("logo.jpg") %></div>
+    <div class="nav"></div>
+    <div class="content"><%= yield %></div>
+    <div class="footer"></div>
+    </div>
 
-<%= yield %>
-
-</body>
+  </body>
+  
 </html>
