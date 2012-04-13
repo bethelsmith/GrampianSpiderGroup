@@ -1,11 +1,12 @@
 GrampianSpiderGroup::Application.routes.draw do
-  get "pages/home"
-
-  get "pages/contact"
   
-  get "pages/about"
+  match '/contact',   :to => 'pages#contact'
   
-  get "pages/resources"
+  match '/about',     :to => 'pages#about'
+  
+  match '/resources', :to => 'pages#resources'
+  
+  root                :to => 'pages#home'
 
   resources :events
 

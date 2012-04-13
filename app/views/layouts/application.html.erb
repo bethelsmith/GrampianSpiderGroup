@@ -5,7 +5,7 @@
   <head>
     
     <title><%= title %></title>
-    <%= stylesheet_link_tag "style", :media => "all" %>
+    <%= render 'layouts/stylesheets' %>
     <%= csrf_meta_tag %>
     
   </head>
@@ -13,11 +13,10 @@
   <body>
     
     <div class="container">
-    <div class="header"></div>
-    <div class="logo"><%= image_tag("logo.jpg") %></div>
-    <div class="nav"></div>
+    <%= render 'layouts/header' %>
+    <%= render 'layouts/navigation' %>
     <div class="content"><%= yield %></div>
-    <div class="footer"></div>
+    <%= render 'layouts/footer' %>
     </div>
 
   </body>

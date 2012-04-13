@@ -103,6 +103,42 @@ div.logo img {
     margin-right: 10px;
 }
 
+div.logo ul {
+    list-style: none;
+}
+
+div.logo li {
+    margin-left: 42.5px;
+    line-height: 45px;
+    height: 45px;
+    width: auto;
+    float: left;
+}
+
+div.logo li a {
+    display: block;
+    font-family: Helvetica, Geneva, Arial, sans-serif;
+    font-weight: bolder;
+    font-size: x-large;
+    text-decoration: none;
+}
+
+div.logo li a:link {
+    color: #b5d9b9;
+}
+
+div.logo li a:visited {
+    color: #80ba80;
+}
+
+div.logo li a:hover {
+    color: #008800;
+}
+
+div.logo li a:active{
+    color: #878686;
+}
+
 div.nav {
     position: relative;
     float: left;
@@ -112,6 +148,42 @@ div.nav {
     background-repeat: repeat-x;
 }
 
+div.nav ul {
+    list-style: none;
+}
+
+div.nav li {
+    margin-left: 42.5px;
+    line-height: 45px;
+    height: 45px;
+    width: auto;
+    float: left;
+}
+
+div.nav li a {
+    display: block;
+    font-family: Helvetica, Geneva, Arial, sans-serif;
+    font-weight: bolder;
+    font-size: x-large;
+    text-decoration: none;
+}
+
+div.nav li a:link {
+    color: #b5d9b9;
+}
+
+div.nav li a:visited {
+    color: #80ba80;
+}
+
+div.nav li a:hover {
+    color: #008800;
+}
+
+div.nav li a:active{
+    color: #878686;
+}
+
 div.content {
     position: relative;
     float: left;
@@ -119,6 +191,14 @@ div.content {
     height: auto;
     background-image: url("body.jpg");
     background-repeat: repeat-x;
+}
+
+a.signup {
+    margin-left: auto;
+    margin-right: auto;
+    display: block;
+    text-align: center;
+    padding: 20px;
 }
 
 div.footer{
