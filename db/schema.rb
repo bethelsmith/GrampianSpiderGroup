@@ -11,26 +11,26 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120401123416) do
+ActiveRecord::Schema.define(:version => 20120414114346) do
 
   create_table "events", :force => true do |t|
-    t.date     "date",                                :default => '2012-04-01',          :null => false
-    t.time     "time",                                :default => '2000-01-01 13:05:10', :null => false
+    t.date     "date",                                :default => '2012-04-13',          :null => false
+    t.time     "time",                                :default => '2000-01-01 17:24:20', :null => false
     t.string   "location_name",        :limit => 100,                                    :null => false
     t.text     "location_description"
     t.string   "grid_ref",             :limit => 14,                                     :null => false
-    t.float    "easting"
-    t.float    "northing"
     t.text     "event_description"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
 
   create_table "users", :force => true do |t|
+    t.string   "name"
     t.string   "email"
-    t.string   "password"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
+
+  add_index "users", ["email"], :name => "index_users_on_email", :unique => true
 
 end

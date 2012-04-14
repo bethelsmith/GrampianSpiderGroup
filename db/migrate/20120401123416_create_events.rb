@@ -6,8 +6,6 @@ class CreateEvents < ActiveRecord::Migration
       t.string :location_name,  :null =>false, :limit => 100
       t.text :location_description
       t.string :grid_ref, :null =>false, :limit => 14
-      t.float :easting
-      t.float :northing
       t.text :event_description
 
       t.timestamps
