@@ -49,4 +49,8 @@ group :test do
   gem "minitest"
   gem "factory_girl_rails"
 end
+
+group :production do
+  gem 'pg'
+end
   
