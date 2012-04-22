@@ -5,8 +5,6 @@ gem 'rails', '3.1.1'
 # Bundle edge Rails instead:
 # gem 'rails',     :git => 'git://github.com/rails/rails.git'
 
-gem 'sqlite3'
-
 gem 'will_paginate'
 
 # Gems used only for assets and not required
@@ -40,6 +38,7 @@ end
 # gem 'ruby-debug19', :require => 'ruby-debug'
 
 group :development do
+  gem 'sqlite3', '1.3.5'
   gem 'annotate', '2.4.0'
   gem 'faker', '0.3.1'
 end
