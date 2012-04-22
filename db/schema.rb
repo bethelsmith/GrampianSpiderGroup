@@ -11,14 +11,14 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120415143935) do
+ActiveRecord::Schema.define(:version => 20120420091518) do
 
   create_table "events", :force => true do |t|
-    t.date     "date",                                :default => '2012-04-13',          :null => false
-    t.time     "time",                                :default => '2000-01-01 17:24:20', :null => false
-    t.string   "location_name",        :limit => 100,                                    :null => false
+    t.date     "date",                                :null => false
+    t.time     "time",                                :null => false
+    t.string   "location_name",        :limit => 100, :null => false
     t.text     "location_description"
-    t.string   "grid_ref",             :limit => 14,                                     :null => false
+    t.string   "grid_ref",             :limit => 14,  :null => false
     t.text     "event_description"
     t.datetime "created_at"
     t.datetime "updated_at"

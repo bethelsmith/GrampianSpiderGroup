@@ -1,4 +1,4 @@
-<h1>Listing events</h1>
+<h1>All Events</h1>
 
 <table>
   <tr>
@@ -7,8 +7,6 @@
     <th>Location name</th>
     <th>Location description</th>
     <th>Grid ref</th>
-    <th>Easting</th>
-    <th>Northing</th>
     <th>Event description</th>
     <th></th>
     <th></th>
@@ -22,8 +20,6 @@
     <td><%= event.location_name %></td>
     <td><%= event.location_description %></td>
     <td><%= event.grid_ref %></td>
-    <td><%= event.easting %></td>
-    <td><%= event.northing %></td>
     <td><%= event.event_description %></td>
     <td><%= link_to 'Show', event %></td>
     <td><%= link_to 'Edit', edit_event_path(event) %></td>

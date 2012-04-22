@@ -12,3 +12,10 @@ end
 Factory.sequence :email do |n|
   "person-#{n}@example.com"
 end
+
+Factory.define :event do |event|
+  event.date                    "01/04/2012"
+  event.time                    "10:00"
+  event.location_name           "Test Location"
+  event.grid_ref                "NJ40"
+end

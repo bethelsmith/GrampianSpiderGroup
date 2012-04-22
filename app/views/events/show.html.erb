@@ -1,5 +1,9 @@
 <p id="notice"><%= notice %></p>
 
+<h1>
+  <%= @event.location_name %>
+</h1>
+
 <p>
   <b>Date:</b>
   <%= @event.date %>
@@ -23,16 +27,6 @@
 <p>
   <b>Grid ref:</b>
   <%= @event.grid_ref %>
-</p>
-
-<p>
-  <b>Easting:</b>
-  <%= @event.easting %>
-</p>
-
-<p>
-  <b>Northing:</b>
-  <%= @event.northing %>
 </p>
 
 <p>
