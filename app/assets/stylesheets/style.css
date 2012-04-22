@@ -74,7 +74,7 @@ div.content a:active {
     color: #000099;
 }
 
-div.content a[href^="mailto:"]{
+div.content a[href="mailto:"]{
     color: #4eba5b;
 }
 
