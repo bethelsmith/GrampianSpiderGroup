@@ -11,4 +11,9 @@ class Event < ActiveRecord::Base
   validates :grid_ref,      :presence => true,
                             :length   => { :maximum => 14 },
                             :format   => { :with => grid_regex }
+  
+  def title
+    "#{location_name} - #{date}"
+  end
+
 end

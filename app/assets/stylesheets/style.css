@@ -289,10 +289,10 @@ div.field input {
   list-style: square;
 }
 
-ul.users {
+ul.users, ul.events {
   margin-top: 1em;
 }
 
-.users li {
+.users li, .events li {
   list-style: none;
 }

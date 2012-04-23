@@ -54,6 +54,7 @@ describe Event do
     no_grid_ref_event.should_not be_valid
   end
   
+  
   it "should accept valid grid references" do
     grids = %w[SH NP1234 OF1234567890]
     grids.each do |grid|

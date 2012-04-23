@@ -37,5 +37,22 @@ describe EventsController do
       response.should have_selector("title", :content => @event.location_name)
     end
   end
+  
+  describe "GET 'index'" do
+    before(:each) do
+      @event = Factory(:event)
+    end
+    
+    it "should be successful" do
+      get :index
+      response.should be_success
+    end
+    
+    it "should have the right title" do
+      get :index
+      response.should have_selector("title", :content => "All Events")
+    end
+    
+  end
 
 end

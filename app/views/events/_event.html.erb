@@ -1,0 +1,5 @@
+<li>
+  <%= link_to event.title, event %>
+  | <%= link_to "delete", event, :method => :delete, :confirm => "You sure?",
+                                :title => "Delete #{event.location_name}" %>
+</li>

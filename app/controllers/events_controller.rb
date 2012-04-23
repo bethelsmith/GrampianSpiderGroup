@@ -1,8 +1,8 @@
 class EventsController < ApplicationController
   
   def index
-    @events = Event.all
-    @title = "Events"
+    @events = Event.paginate(:page => params[:page])
+    @title = "All Events"
   end
 
   def new

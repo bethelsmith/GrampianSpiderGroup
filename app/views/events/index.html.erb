@@ -1,33 +1,9 @@
 <h1>All Events</h1>
 
-<table>
-  <tr>
-    <th>Date</th>
-    <th>Time</th>
-    <th>Location name</th>
-    <th>Location description</th>
-    <th>Grid ref</th>
-    <th>Event description</th>
-    <th></th>
-    <th></th>
-    <th></th>
-  </tr>
+<%= will_paginate %>
 
-<% @events.each do |event| %>
-  <tr>
-    <td><%= event.date %></td>
-    <td><%= event.time %></td>
-    <td><%= event.location_name %></td>
-    <td><%= event.location_description %></td>
-    <td><%= event.grid_ref %></td>
-    <td><%= event.event_description %></td>
-    <td><%= link_to 'Show', event %></td>
-    <td><%= link_to 'Edit', edit_event_path(event) %></td>
-    <td><%= link_to 'Destroy', event, confirm: 'Are you sure?', method: :delete %></td>
-  </tr>
-<% end %>
-</table>
+<ul class="events">
+  <%= render @events %>
+</ul>
 
-<br />
-
-<%= link_to 'New Event', new_event_path %>
+<%= will_paginate %>
