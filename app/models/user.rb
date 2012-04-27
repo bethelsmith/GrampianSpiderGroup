@@ -1,8 +1,7 @@
 class User < ActiveRecord::Base
-  has_many :events,
-            :order => "date DESC"
-  has_many :registrations
-  has_many :activities, :through => :registrations, :source => :event
+
+  has_many :registrations, :dependent => :destroy
+  has_many :attending, :through => :registrations, :source => :event
   
   attr_accessor :password
   attr_accessible :name, :email, :password, :password_confirmation
@@ -30,10 +29,24 @@ class User < ActiveRecord::Base
     return user if user.has_password?(submitted_password)
   end
   
- def self.authenticate_with_salt(id, cookie_salt)
-    user = find_by_id(id)
-    (user && user.salt == cookie_salt) ? user : nil
+  def self.authenticate_with_salt(id, cookie_salt)
+     user = find_by_id(id)
+     (user && user.salt == cookie_salt) ? user : nil
   end
+ 
+  def attending?(event)
+    registrations.find_by_event_id(event)
+  end
+  
+  def attend!(event)
+    registrations.create!(:event_id => event.id)
+  end
+  
+  def unattend!(event)
+    registrations.find_by_event_id(event).destroy
+  end
+
+  
 
   private
 

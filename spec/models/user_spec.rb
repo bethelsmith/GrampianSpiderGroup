@@ -148,4 +148,49 @@ describe User do
       @user.should be_admin
     end
   end
+  
+  describe "registrations" do
+    
+    before(:each) do
+      @user = User.create!(@attr)
+      @event = Factory(:event)
+    end
+    
+    it "should have a regristrations method" do
+      @user.should respond_to(:registrations)
+    end
+    
+    it "should have an attending method" do
+      @user.should respond_to(:attending)
+    end
+    
+    it "should have an attending? method" do
+      @user.should respond_to(:attending?)
+    end
+    
+    it "should have an attend! method" do
+      @user.should respond_to(:attend!)
+    end
+    
+    it "should attend an event" do
+      @user.attend!(@event)
+      @user.should be_attending(@event)
+    end
+    
+    it "should include the event in the attending array" do
+      @user.attend!(@event)
+      @user.attending.should include(@event)
+    end
+    
+    it "should have an unattend! method" do
+      @user.should respond_to(:unattend!)
+    end
+    
+    it "should unattend an event" do
+      @user.attend!(@event)
+      @user.unattend!(@event)
+      @user.should_not be_attending(@event)
+    end
+    
+  end
 end

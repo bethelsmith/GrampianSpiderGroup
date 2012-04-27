@@ -41,6 +41,9 @@ describe EventsController do
   describe "GET 'index'" do
     before(:each) do
       @event = Factory(:event)
+      30.times do
+        @event << Factory(:event, :location_name => Factory.next(:location_name))
+      end
     end
     
     it "should be successful" do

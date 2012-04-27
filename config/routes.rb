@@ -1,8 +1,9 @@
 GrampianSpiderGroup::Application.routes.draw do
   
-  resources :users
+  resources :users,:events
   resources :sessions, :only => [:new, :create, :destroy]
   
+  root                :to => 'pages#home'
   
   match '/signup',   :to => 'users#new'
   
@@ -15,10 +16,6 @@ GrampianSpiderGroup::Application.routes.draw do
   match '/about',     :to => 'pages#about'
   
   match '/resources', :to => 'pages#resources'
-  
-  root                :to => 'pages#home'
-
-  resources :events
   
   match  'events/show/:id', :to => 'events#show'
   

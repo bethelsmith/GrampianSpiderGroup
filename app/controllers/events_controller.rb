@@ -1,4 +1,6 @@
 class EventsController < ApplicationController
+  before_filter :authenticate, :only => [:new, :edit, :update, :destroy]
+  before_filter :admin_user,   :only => [:new, :edit, :update, :destroy]
   
   def index
     @events = Event.paginate(:page => params[:page])
@@ -41,6 +43,22 @@ class EventsController < ApplicationController
         format.html { render :action => "edit" }
       end
     end
+  end
+  
+  def destroy
+    Event.find(params[:id]).destroy
+    flash[:success] = "Event was successfully removed."
+    redirect_to events_path
+  end
+  
+  private
+  
+  def authenticate
+    deny_access unless signed_in?
+  end
+  
+  def admin_user
+    redirect_to(root_path) unless current_user.admin?
   end
 
 end

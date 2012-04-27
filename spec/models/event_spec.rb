@@ -4,7 +4,7 @@ describe Event do
   
   before(:each) do
     @attr = {
-      :date => "20/04/2012",
+      :date => "20/04/2013",
       :time => "10:00",
       :location_name => "Location",
       :location_description => "This is the location description.",
@@ -70,5 +70,23 @@ describe Event do
       invalid_grid_ref_event.should_not be_valid
     end
   end
-   
+  
+  describe "registrations" do
+     
+    before(:each) do
+      @event = Event.create!(@attr)
+      @user = Factory(:user)
+    end
+    
+    it "should have a reverse_registrations method" do
+      @event.should respond_to(:reverse_registrations)
+    end
+    
+    it "should have an attendees method" do
+      @event.should respond_to(:attendees)
+    end
+    
+    
+    
+  end
 end

@@ -1,7 +1,7 @@
 class Event < ActiveRecord::Base
-  belongs_to  :user
-  has_many    :registrations
-  has_many    :attendees, :through => :registrations, :source => :user
+
+  has_many    :reverse_registrations, :dependent => :destroy
+  has_many    :attendees, :through => :reverse_registrations, :source => :user
   
   attr_accessible :date, :time, :location_name, :grid_ref
   
