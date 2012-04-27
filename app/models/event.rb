@@ -1,9 +1,13 @@
 class Event < ActiveRecord::Base
+  belongs_to  :user
+  has_many    :registrations
+  has_many    :attendees, :through => :registrations, :source => :user
   
   attr_accessible :date, :time, :location_name, :grid_ref
   
   grid_regex = /^((([S]|[N])[A-HJ-Z])|(([T]|[O])[ABFGLMQRVW])|([H][L-Z])|([J][LMQRVW]))([0-9]{2})?([0-9]{2})?([0-9]{2})?([0-9]{2})?([0-9]{2})?$/
   
+  validate  :past
   validates :date,          :presence => true
   validates :time,          :presence => true
   validates :location_name, :presence => true,
@@ -14,6 +18,14 @@ class Event < ActiveRecord::Base
   
   def title
     "#{location_name} - #{date}"
+  end
+  
+  def past?
+    date < Date.today
+  end
+  
+  def past
+    errors.add("date", "is in the past") if date && past?
   end
 
 end

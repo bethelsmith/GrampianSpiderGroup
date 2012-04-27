@@ -1,4 +1,9 @@
 class User < ActiveRecord::Base
+  has_many :events,
+            :order => "date DESC"
+  has_many :registrations
+  has_many :activities, :through => :registrations, :source => :event
+  
   attr_accessor :password
   attr_accessible :name, :email, :password, :password_confirmation
   

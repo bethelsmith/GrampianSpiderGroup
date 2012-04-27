@@ -22,6 +22,10 @@ GrampianSpiderGroup::Application.routes.draw do
   
   match  'events/show/:id', :to => 'events#show'
   
+  match  'events/edit/:id', :to => 'events#edit'
+  
+  match  'events/new', :to => 'events#new'
+  
 
   # The priority is based upon order of creation:
   # first created -> highest priority.

@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120420091518) do
+ActiveRecord::Schema.define(:version => 20120423182034) do
 
   create_table "events", :force => true do |t|
     t.date     "date",                                :null => false
@@ -20,6 +20,13 @@ ActiveRecord::Schema.define(:version => 20120420091518) do
     t.text     "location_description"
     t.string   "grid_ref",             :limit => 14,  :null => false
     t.text     "event_description"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "registrations", :force => true do |t|
+    t.integer  "user_id"
+    t.integer  "event_id"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
