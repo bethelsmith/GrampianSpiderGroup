@@ -1,7 +1,10 @@
 <li>
   <%= link_to event.title, event %>
+
   <% if current_user.admin? %>
+  | <%= link_to 'edit', edit_event_path(event) %>
   | <%= link_to "delete", event, :method => :delete, :confirm => "You sure?",
                                 :title => "Delete #{event.location_name}" %>
   <% end %>
+
 </li>

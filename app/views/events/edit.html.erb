@@ -1,6 +1,35 @@
-<h1>Editing event</h1>
+<h1>Edit Event</h1>
 
-<%= render 'form' %>
+<%= form_for(@event) do |f| %>
+  <%= render 'shared/error_messages', :object => f.object %>
+  <div class="field">
+    <%= f.label :date %><br />
+    <%= f.date_select :date %>
+  </div>
+  <div class="field">
+    <%= f.label :time %><br />
+    <%= f.time_select :time %>
+  </div>
+  <div class="field">
+    <%= f.label :location_name %><br />
+    <%= f.text_area :location_name, :rows => 1 %>
+  </div>
+  <div class="field">
+    <%= f.label :location_description %><br />
+    <%= f.text_area :location_description, :rows => 6 %>
+  </div>
+  <div class="field">
+    <%= f.label :grid_ref %><br />
+    <%= f.text_area :grid_ref,  :rows => 1%>
+  </div>
+  <div class="field">
+    <%= f.label :event_description %><br />
+    <%= f.text_area :event_description, :rows => 6 %>
+  </div>
+    <div class="actions">
+    <%= f.submit "Update" %>
+  </div>
+<% end %>
 
 <%= link_to 'Show', @event %> |
 <%= link_to 'Back', events_path %>

@@ -4,7 +4,7 @@ describe Event do
   
   before(:each) do
     @attr = {
-      :date => "20/04/2013",
+      :date => Date.today,
       :time => "10:00",
       :location_name => "Location",
       :location_description => "This is the location description.",
@@ -56,18 +56,20 @@ describe Event do
   
   
   it "should accept valid grid references" do
+    @event = Event.new(date: Date.today, time: "10:00", location_name: "test location")
     grids = %w[SH NP1234 OF1234567890]
-    grids.each do |grid|
-      valid_grid_ref_event = Event.new{@attr.merge(:grid_ref => grid)}
-      valid_grid_ref_event.should be_valid
+    grids.each do |valid_grid|
+      @event.grid_ref = valid_grid
+      @event.should be_valid
     end
   end
   
   it "should reject invalid grid references" do
+    @event = Event.new(date: Date.today, time: "10:00", location_name: "test location")
     grids = %w[SH123 SH12D NI1234 1234]
-    grids.each do |grid|
-      invalid_grid_ref_event = Event.new{@attr.merge(:grid_ref => grid)}
-      invalid_grid_ref_event.should_not be_valid
+    grids.each do |invalid_grid|
+      @event.grid_ref = invalid_grid
+      @event.should_not be_valid
     end
   end
   
@@ -75,7 +77,7 @@ describe Event do
      
     before(:each) do
       @event = Event.create!(@attr)
-      @user = Factory(:user)
+      @user = FactoryGirl.create(:user)
     end
     
     it "should have a reverse_registrations method" do
@@ -86,7 +88,14 @@ describe Event do
       @event.should respond_to(:attendees)
     end
     
+    it "should have an attendees method" do
+      @event.should respond_to(:attendees)
+    end
     
+    it "should include the user in the attendees array" do
+      @user.attend!(@event)
+      @event.attendees.should include(@user)
+    end
     
   end
 end

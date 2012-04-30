@@ -1,9 +1,10 @@
 class Event < ActiveRecord::Base
 
-  has_many    :reverse_registrations, :dependent => :destroy
+  has_many    :reverse_registrations, :class_name => "Registration",
+                                      :dependent => :destroy
   has_many    :attendees, :through => :reverse_registrations, :source => :user
   
-  attr_accessible :date, :time, :location_name, :grid_ref
+  attr_accessible :date, :time, :location_name, :location_description, :grid_ref, :event_description
   
   grid_regex = /^((([S]|[N])[A-HJ-Z])|(([T]|[O])[ABFGLMQRVW])|([H][L-Z])|([J][LMQRVW]))([0-9]{2})?([0-9]{2})?([0-9]{2})?([0-9]{2})?([0-9]{2})?$/
   

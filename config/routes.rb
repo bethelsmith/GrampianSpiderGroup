@@ -1,27 +1,28 @@
 GrampianSpiderGroup::Application.routes.draw do
   
-  resources :users,:events
+  resources :users, :events 
+
   resources :sessions, :only => [:new, :create, :destroy]
   
-  root                :to => 'pages#home'
+  root                      :to => 'pages#home'
   
-  match '/signup',   :to => 'users#new'
+  match '/signup',          :to => 'users#new'
   
-  match '/signin',  :to => 'sessions#new'
+  match '/signin',          :to => 'sessions#new'
   
-  match '/signout', :to => 'sessions#destroy'
+  match '/signout',         :to => 'sessions#destroy'
 
-  match '/contact',   :to => 'pages#contact'
+  match '/contact',         :to => 'pages#contact'
   
-  match '/about',     :to => 'pages#about'
+  match '/about',           :to => 'pages#about'
   
-  match '/resources', :to => 'pages#resources'
+  match '/resources',       :to => 'pages#resources'
+  
+  match 'events',           :to => 'events#index'
   
   match  'events/show/:id', :to => 'events#show'
   
-  match  'events/edit/:id', :to => 'events#edit'
-  
-  match  'events/new', :to => 'events#new'
+  match  'events/new',      :to => 'events#new'
   
 
   # The priority is based upon order of creation:

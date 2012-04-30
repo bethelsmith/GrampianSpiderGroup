@@ -3,8 +3,8 @@ require 'spec_helper'
 describe Registration do
   
   before(:each) do
-    @user = Factory(:user)
-    @event = Factory(:event)
+    @user = FactoryGirl.create(:user)
+    @event = FactoryGirl.create(:event)
     
     @registration = @user.registrations.build(:event_id => @event.id)
   end

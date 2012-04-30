@@ -1,9 +1,9 @@
 class EventsController < ApplicationController
-  before_filter :authenticate, :only => [:new, :edit, :update, :destroy]
+  before_filter :authenticate, :only => [:index, :new, :edit, :update, :destroy]
   before_filter :admin_user,   :only => [:new, :edit, :update, :destroy]
   
   def index
-    @events = Event.paginate(:page => params[:page])
+    @events = Event.paginate(:page => params[:page]).order( 'date DESC')
     @title = "All Events"
   end
 
@@ -19,6 +19,7 @@ class EventsController < ApplicationController
   
   def edit
     @event = Event.find(params[:id])
+    @title = "Edit Event"
   end
   
   def create
@@ -33,15 +34,14 @@ class EventsController < ApplicationController
     end
   end
   
-  def upate
+  def update
     @event = Event.find(params[:id])
-    
-    respond_to do |format|
-      if @event.save
-        format.html { redirect_to(@event, :notice => 'Event was successfully updated.') }
-      else
-        format.html { render :action => "edit" }
-      end
+    if @event.update_attributes(params[:event])
+      flash[:success] = "Event was successfully updated."
+      redirect_to @event
+    else
+      @title = "Edit Event"
+      render 'edit'
     end
   end
   

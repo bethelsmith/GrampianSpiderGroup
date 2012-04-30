@@ -1,25 +1,17 @@
-Factory.define :user do |user|
-  user.name                  "Bee Smith"
-  user.email                 "bethelsmith@hotmail.com"
-  user.password              "mayf1eld"
-  user.password_confirmation "mayf1eld"
+FactoryGirl.define do
+  factory :user do
+    sequence(:name)       { |n| "Person #{n}" }
+    sequence(:email)      { |n| "person_#{n}@grampianspidergroup.com"} 
+    password              "grampianspidergroup"
+    password_confirmation "grampianspidergroup"
+  end
 end
 
-Factory.sequence :name do |n|
-  "Person #{n}"
-end
-
-Factory.sequence :email do |n|
-  "person-#{n}@example.com"
-end
-
-Factory.define :event do |event|
-  event.date                    "01/04/2013"
-  event.time                    "10:00"
-  event.location_name           "Test Location"
-  event.grid_ref                "NJ40"
-end
-
-Factory.sequence :location_name do |n|
-  "Test Location #{n}"
+FactoryGirl.define do
+  factory :event do
+    date                        Date.today
+    time                        "10:00"
+    sequence(:location_name)   { |n| "Test Location #{n}"}
+    grid_ref                    "NJ40"
+  end
 end

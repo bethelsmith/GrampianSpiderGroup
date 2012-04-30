@@ -22,11 +22,6 @@ describe "LayoutLinks" do
       response.should have_selector('title', :content => "Resources")
     end
     
-    it "should have an Events page at '/events'" do
-      get '/events'
-      response.should have_selector('title', :content => "Events")
-    end
-    
     it "should have a Sign up page at '/signup'" do
       get '/signup'
       response.should have_selector('title', :content => "Sign up")
@@ -43,7 +38,7 @@ describe "LayoutLinks" do
   describe "when signed in" do
 
     before(:each) do
-      @user = Factory(:user)
+      @user = FactoryGirl.create(:user)
       visit signin_path
       fill_in :email,    :with => @user.email
       fill_in :password, :with => @user.password
@@ -60,6 +55,11 @@ describe "LayoutLinks" do
       visit root_path
       response.should have_selector("a", :href => user_path(@user),
                                          :content => "Profile")
+    end
+    
+    it "should have an Events page at '/events'" do
+      get '/events'
+      response.should have_selector('title', :content => "Events")
     end
   end
 end

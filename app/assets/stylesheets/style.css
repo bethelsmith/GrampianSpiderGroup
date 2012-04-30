@@ -261,7 +261,7 @@ div.field input {
 
 #error_explanation {
   width: 400px;
-  border: 1px solid red;
+  border: 2px solid red;
   padding: 7px;
   padding-bottom: 12px;
   margin-bottom: 20px;
@@ -296,3 +296,4 @@ ul.users, ul.events {
 .users li, .events li {
   list-style: none;
 }
+

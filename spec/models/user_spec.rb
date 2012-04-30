@@ -153,7 +153,7 @@ describe User do
     
     before(:each) do
       @user = User.create!(@attr)
-      @event = Factory(:event)
+      @event = FactoryGirl.create(:event)
     end
     
     it "should have a regristrations method" do
