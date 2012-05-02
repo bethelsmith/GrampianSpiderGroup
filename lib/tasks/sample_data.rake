@@ -45,14 +45,16 @@ def make_registrations
 
   users = User.all
   events = Event.all
-  event = events.first
   
   attendees = users[0..20]
+  event1 = events[0]
+  event1 = events[1]
+  event1 = events[2]
   
-  attendees.each {|attendee| attendee.attend!(event)}
-  
+  attendees.each {|attendee| attendee.attend!(event1)}
+  attendees.each {|attendee| attendee.attend!(event2)}
+  attendees.each {|attendee| attendee.attend!(event3)}
 end
-
   
   
   

@@ -1,8 +1,10 @@
-
-
 <h1>
   <%= @event.location_name %>
 </h1>
+
+<p>
+  <%= render 'attend_form' if signed_in? %>
+</p>
 
 <p>
   <b>Date:</b>
@@ -32,6 +34,10 @@
 <p>
   <b>Event Description:</b>
   <%= simple_format @event.event_description %>
+</p>
+
+<p>
+  <%= render 'shared/attendeestats' %>
 </p>
 
 <p>

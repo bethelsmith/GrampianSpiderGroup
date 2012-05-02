@@ -1,0 +1,7 @@
+<div class="stats">
+    <a href="<%= attendees_event_path(@event) %>">
+      <span id="attendees" class="stat">
+        <%= pluralize(@event.attendees.count, "attendee") %>
+      </span>
+    </a>
+</div>

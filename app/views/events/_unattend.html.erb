@@ -1,0 +1,4 @@
+<%= form_for current_user.registrations.find_by_event_id(@event),
+             :html => { :method => :delete } do |f| %>
+  <div class="actions"><%= f.submit "Unattend" %></div>
+<% end %>

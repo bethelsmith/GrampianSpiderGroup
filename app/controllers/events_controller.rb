@@ -1,5 +1,5 @@
 class EventsController < ApplicationController
-  before_filter :authenticate, :only => [:index, :new, :edit, :update, :destroy]
+  before_filter :authenticate, :except => [:show, :create]
   before_filter :admin_user,   :only => [:new, :edit, :update, :destroy]
   
   def index
@@ -51,6 +51,13 @@ class EventsController < ApplicationController
     redirect_to events_path
   end
   
+  def attendees
+    @title = "Attendees"
+    @event = Event.find(params[:id])
+    @users = @event.attendees.paginate(:page => params[:page])
+    render 'show_attendees'
+  end
+  
   private
   
   def authenticate
@@ -60,5 +67,5 @@ class EventsController < ApplicationController
   def admin_user
     redirect_to(root_path) unless current_user.admin?
   end
-
+  
 end

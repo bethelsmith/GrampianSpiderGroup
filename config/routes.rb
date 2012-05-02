@@ -1,8 +1,20 @@
 GrampianSpiderGroup::Application.routes.draw do
   
-  resources :users, :events 
+  resources :users do
+    member do
+    get :attending
+    end
+  end
+  
+  resources :events do
+    member do
+    get :attendees
+    end
+  end
 
   resources :sessions, :only => [:new, :create, :destroy]
+  
+  resources :registrations, :only => [:create, :destroy]
   
   root                      :to => 'pages#home'
   

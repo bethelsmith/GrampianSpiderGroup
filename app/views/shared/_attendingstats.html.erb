@@ -1,0 +1,8 @@
+<% @user = current_user %>
+<div class="stats">
+    <a href="<%= attending_user_path(@user) %>">
+      <span id="attending" class="stat">
+        <%= pluralize(@user.attending.count, "event") %> 
+      </span>
+    </a>
+</div>

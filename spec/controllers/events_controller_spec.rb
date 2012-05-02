@@ -102,6 +102,12 @@ describe EventsController do
       get :show, :id => @event
       response.should have_selector("title", :content => @event.location_name)
     end
+    
+    it "should have the right attendee counts" do
+      response.should have_selector("a", :href => attendees_event_path(@event),
+                                         :content => "0 attendees")
+    end
+    
   end
   
   
@@ -283,6 +289,32 @@ describe EventsController do
       it "should redirect to the events page" do
         delete :destroy, :id => @event
         response.should redirect_to(events_path)
+      end
+    end
+  end
+  
+  describe "attendee pages" do
+
+    describe "when not signed in" do
+
+      it "should protect 'attendees'" do
+        get :attendees, :id => 1
+        response.should redirect_to(signin_path)
+      end
+    end
+    
+    describe "when signed in" do
+
+      before(:each) do
+        @user = test_sign_in(FactoryGirl.create(:user))
+        @event = FactoryGirl.create(:event)
+        @user.attend!(@event)
+      end
+
+      it "should show event attendees" do
+        get :attendees, :id => @event
+        response.should have_selector("a", :href => event_path(@user),
+                                           :content => @user.name)
       end
     end
   end

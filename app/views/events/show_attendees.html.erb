@@ -1,0 +1,8 @@
+<h1>All Attendees</h1>
+
+  <% unless @users.empty? %>
+    <ul class="users">
+      <%= render @users %>
+    </ul>
+    <%= will_paginate @users %>
+  <% end %>

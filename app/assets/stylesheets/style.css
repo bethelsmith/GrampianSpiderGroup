@@ -297,3 +297,6 @@ ul.users, ul.events {
   list-style: none;
 }
 
+div.stats {
+    margin-left: 20px;
+}

@@ -1,0 +1,4 @@
+<%= form_for current_user.registrations.build(:event_id => @event.id) do |f| %>
+  <div><%= f.hidden_field :user_id %></div>
+  <div class="actions"><%= f.submit "Attend" %></div>
+<% end %>

@@ -89,6 +89,12 @@ describe UsersController do
       get :show, :id => @user
       response.should have_selector("title", :content => @user.name)
     end
+    
+    it "should have the right attending counts" do
+      response.should have_selector("a", :href => attending_user_path(@user),
+                                         :content => "0 events")
+    end
+    
   end
   
   describe "POST 'create'" do
@@ -291,6 +297,32 @@ describe UsersController do
       it "should redirect to the users page" do
         delete :destroy, :id => @user
         response.should redirect_to(users_path)
+      end
+    end
+  end
+  
+  describe "attending events pages" do
+
+    describe "when not signed in" do
+
+      it "should protect 'attending'" do
+        get :attending, :id => 1
+        response.should redirect_to(signin_path)
+      end
+    end
+    
+    describe "when signed in" do
+
+      before(:each) do
+        @user = test_sign_in(FactoryGirl.create(:user))
+        @event = FactoryGirl.create(:event)
+        @user.attend!(@event)
+      end
+
+      it "should show user attending" do
+        get :attending, :id => @user
+        response.should have_selector("a", :href => user_path(@event),
+                                           :content => @event.title)
       end
     end
   end
