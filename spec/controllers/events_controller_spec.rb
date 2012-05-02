@@ -104,6 +104,7 @@ describe EventsController do
     end
     
     it "should have the right attendee counts" do
+      get :show, :id => @event
       response.should have_selector("a", :href => attendees_event_path(@event),
                                          :content => "0 attendees")
     end
@@ -313,7 +314,7 @@ describe EventsController do
 
       it "should show event attendees" do
         get :attendees, :id => @event
-        response.should have_selector("a", :href => event_path(@user),
+        response.should have_selector("a", :href => user_path(@user),
                                            :content => @user.name)
       end
     end

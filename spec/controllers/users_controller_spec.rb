@@ -71,7 +71,7 @@ describe UsersController do
   describe "GET 'show'" do
 
     before(:each) do
-      @user = FactoryGirl.create(:user)
+      @user = test_sign_in(FactoryGirl.create(:user))
     end
 
     it "should be successful" do
@@ -91,6 +91,7 @@ describe UsersController do
     end
     
     it "should have the right attending counts" do
+      get :show, :id => @user
       response.should have_selector("a", :href => attending_user_path(@user),
                                          :content => "0 events")
     end
@@ -321,7 +322,7 @@ describe UsersController do
 
       it "should show user attending" do
         get :attending, :id => @user
-        response.should have_selector("a", :href => user_path(@event),
+        response.should have_selector("a", :href => event_path(@event),
                                            :content => @event.title)
       end
     end

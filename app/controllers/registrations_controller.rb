@@ -4,14 +4,20 @@ class RegistrationsController < ApplicationController
   def create
     @event = Event.find(params[:registration][:user_id])
     current_user.attend!(@event)
-    redirect_to @event 
+    respond_to do |format|
+      format.html { redirect_to @event }
+      format.js
+    end
   end
 
   def destroy
     @event = Event.find(params[:id])
     @user = Registration.find(params[:id]).user
     current_user.unattend!(@user)
-    redirect_to @event
+    respond_to do |format|
+      format.html { redirect_to @event }
+      format.js
+    end
   end
   
   def authenticate
