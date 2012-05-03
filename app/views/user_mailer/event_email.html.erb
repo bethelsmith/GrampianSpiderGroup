@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta content="text/html; charset=UTF-8" http-equiv="Content-Type" />
+  </head>
+  <body>
+    <h1>You have registered to attend a Grampian Spider Group event - <%= @event.title %></h1>
+    <p>
+      You have successfully registered to attend the following event:
+      <%= @event.location_name%>.<br/>
+      on: <%= @event.date%>.<br/>
+      at: <%= @event.time%>.<br/>
+    </p>
+    <p>
+      For more details about the event just follow this link: <%= @url %>.
+    </p>
+    <p>See you there!</p>
+  </body>
+</html>

@@ -4,6 +4,7 @@ class RegistrationsController < ApplicationController
   def create
     @event = Event.find(params[:registration][:user_id])
     current_user.attend!(@event)
+    UserMailer.event_email(current_user, @event).deliver
     respond_to do |format|
       format.html { redirect_to @event }
       format.js
