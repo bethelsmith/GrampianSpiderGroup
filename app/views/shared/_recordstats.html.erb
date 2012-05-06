@@ -1,0 +1,8 @@
+<% @user = current_user %>
+<div class="stats">
+    <a href="<%= records_user_path(@user) %>">
+      <span id="records" class="stat">
+        <%= pluralize(@user.records.count, "record") %> 
+      </span>
+    </a>
+</div>

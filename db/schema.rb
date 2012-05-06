@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120423182034) do
+ActiveRecord::Schema.define(:version => 20120503201549) do
 
   create_table "events", :force => true do |t|
     t.date     "date",                                :null => false
@@ -24,12 +24,29 @@ ActiveRecord::Schema.define(:version => 20120423182034) do
     t.datetime "updated_at"
   end
 
+  create_table "records", :force => true do |t|
+    t.integer  "user_id",                   :null => false
+    t.date     "date",                      :null => false
+    t.string   "species",                   :null => false
+    t.string   "location",   :limit => 100, :null => false
+    t.string   "grid_ref",   :limit => 14,  :null => false
+    t.text     "comments"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "records", ["user_id", "created_at"], :name => "index_records_on_user_id_and_created_at"
+
   create_table "registrations", :force => true do |t|
     t.integer  "user_id"
     t.integer  "event_id"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
+
+  add_index "registrations", ["event_id"], :name => "index_registrations_on_event_id"
+  add_index "registrations", ["user_id", "event_id"], :name => "index_registrations_on_user_id_and_event_id", :unique => true
+  add_index "registrations", ["user_id"], :name => "index_registrations_on_user_id"
 
   create_table "users", :force => true do |t|
     t.string   "name"

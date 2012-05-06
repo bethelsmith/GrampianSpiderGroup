@@ -14,4 +14,15 @@ FactoryGirl.define do
     sequence(:location_name)   { |n| "Test Location #{n}"}
     grid_ref                    "NJ40"
   end
+  
+FactoryGirl.define do
+  factory :record do
+    association     :user
+    date            Date.today
+    species         "Arianella cucurbitina"
+    location        "Aberdeenshire"
+    grid_ref        "NJ40"
+  end
+end
+  
 end

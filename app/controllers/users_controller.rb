@@ -15,6 +15,7 @@ class UsersController < ApplicationController
   
   def show
     @user = User.find(params[:id])
+    @records = @user.records.paginate(:page => params[:page])
     @title = @user.name
   end
   
@@ -58,12 +59,15 @@ class UsersController < ApplicationController
     @events = @user.attending.paginate(:page => params[:page])
     render 'show_attending'
   end
+  
+  def records
+    @title = "Records"
+    @user = User.find(params[:id])
+    @records = @user.records.paginate(:page => params[:page])
+    render 'show_records'
+  end
 
   private
-
-  def authenticate
-    deny_access unless signed_in?
-  end
   
   def correct_user
     @user = User.find(params[:id])

@@ -149,6 +149,31 @@ describe User do
     end
   end
   
+  describe "record associations" do
+    
+    before(:each) do
+      @user = FactoryGirl.create(:user)
+      @record1 = FactoryGirl.create(:record, :user => @user, :created_at => 1.day.ago)
+      @record2 = FactoryGirl.create(:record, :user => @user, :created_at => 1.hour.ago)
+    end
+    
+    it "should have a records attribute" do
+      @user.should respond_to(:records)
+    end
+
+    it "should have the right records in the right order" do
+      @user.records.should == [@record2, @record1]
+    end
+    
+    it "should destroy associated records" do
+      @user.destroy
+      [@record1, @record2].each do |record|
+        Record.find_by_id(record.id).should be_nil
+      end
+    end
+    
+  end
+  
   describe "registrations" do
     
     before(:each) do

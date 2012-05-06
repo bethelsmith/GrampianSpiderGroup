@@ -1,0 +1,41 @@
+<h1>
+  <b> Grampian Spider Group Record - <%= @record.id %></b>
+</h1>
+
+<p>
+  <b>Species:</b>
+  <%= @record.species %>
+</p>
+
+
+<p>
+  <b>Date:</b>
+  <%= @record.date.strftime("%d %b %y") %>
+</p>
+
+<p>
+  <b>Location:</b>
+  <%= @record.location %>
+</p>
+
+<p>
+  <b>Grid Ref:</b>
+  <%= @record.grid_ref %>
+</p>
+
+<p>
+  <b>Comments:</b>
+  <%= simple_format @record.comments %>
+</p>
+
+<p>
+  <% if current_user?(@record.user) %>
+  <%= link_to 'edit', edit_record_path(@record) %>
+  | <%= link_to "delete", @record, :method => :delete, :confirm => "You sure?",
+                                :title => "Delete record #{@record.id}"%>
+  <% end %>
+</p>
+
+<p>
+<%= link_to 'back', records_path %>
+</p>

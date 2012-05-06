@@ -1,5 +1,9 @@
 <h1>All Attendees</h1>
 
+<p>
+  <%= @event.title %>
+</p>
+
   <% unless @users.empty? %>
     <ul class="users">
       <%= render @users %>

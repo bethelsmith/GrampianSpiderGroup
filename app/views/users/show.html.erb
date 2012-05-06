@@ -2,6 +2,7 @@
   <%= @user.name %>
 </h1>
 
+<div>
 <p>
   <b>Email:</b>
   <%= @user.email %>
@@ -9,13 +10,23 @@
 
 <p>
   <b>Date joined:</b>
-  <%= @user.created_at %>
+  <%= @user.created_at.strftime("%d %b %y") %>
 </p>
 
 <p>
+  <b>Records:</b>
+  <%= render 'shared/recordstats' %>
+</p>
+
+<p>
+  <b>Events:</b>
   <%= render 'shared/attendingstats' %>
 </p>
 
 <p>
-<%= link_to 'Back', users_path %>
+  <%= link_to 'Back', users_path %>
 </p>
+</div>
+
+
+

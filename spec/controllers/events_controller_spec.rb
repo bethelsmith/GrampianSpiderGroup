@@ -89,6 +89,7 @@ describe EventsController do
   describe "GET 'show'" do
 
     before(:each) do
+      @user = test_sign_in(FactoryGirl.create(:user))
       @event = FactoryGirl.create(:event)
     end
 
@@ -259,6 +260,7 @@ describe EventsController do
     end
 
     describe "as a non-signed-in user" do
+      
       it "should deny access" do
         delete :destroy, :id => @event
         response.should redirect_to(signin_path)

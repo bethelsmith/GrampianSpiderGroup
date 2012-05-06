@@ -1,0 +1,16 @@
+<p>
+  <% if signed_in? %>
+  <%= link_to 'Create a New Record', new_record_path %>
+  <% end %>
+<p>
+
+<h1>All Records</h1>
+
+<%= will_paginate %>
+
+<ul class="records">
+  <%= render @records %>
+</ul>
+</br>
+
+<%= will_paginate %>

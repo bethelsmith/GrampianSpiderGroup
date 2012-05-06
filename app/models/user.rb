@@ -1,5 +1,6 @@
 class User < ActiveRecord::Base
 
+  has_many :records, :dependent => :destroy
   has_many :registrations, :dependent => :destroy
   has_many :attending, :through => :registrations, :source => :event
   

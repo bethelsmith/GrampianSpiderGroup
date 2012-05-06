@@ -7,6 +7,7 @@ namespace :db do
     make_users
     make_events
     make_registrations
+    make_records
   end
 end
 
@@ -48,13 +49,21 @@ def make_registrations
   
   attendees = users[0..20]
   event1 = events[0]
-  event1 = events[1]
-  event1 = events[2]
+  event2 = events[1]
+  event3 = events[2]
   
   attendees.each {|attendee| attendee.attend!(event1)}
   attendees.each {|attendee| attendee.attend!(event2)}
   attendees.each {|attendee| attendee.attend!(event3)}
 end
-  
-  
-  
+
+def make_records
+  10.times do
+    User.all(:limit => 5).each do |user|
+      user.records.create!(:date => Date.today,
+          :species => "Arianella cucurbitina",
+          :location => "Aberdeenshire",
+          :grid_ref => "NJ40")
+    end
+  end
+end

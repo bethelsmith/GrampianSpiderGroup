@@ -1,0 +1,12 @@
+<h1>My Records</h1>
+
+<p>
+   <%= @user.name %>
+</p>
+
+  <% unless @records.empty? %>
+    <ul class="records">
+      <%= render @records %>
+    </ul>
+    <%= will_paginate @records %>
+  <% end %>

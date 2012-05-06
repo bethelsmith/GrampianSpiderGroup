@@ -18,7 +18,7 @@ class Event < ActiveRecord::Base
                             :format   => { :with => grid_regex }
   
   def title
-    "#{location_name} - #{date}"
+    "#{location_name} - #{date.strftime("%d %b %y")}"
   end
   
   def past?

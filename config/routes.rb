@@ -4,6 +4,9 @@ GrampianSpiderGroup::Application.routes.draw do
     member do
     get :attending
     end
+    member do
+    get :records
+    end
   end
   
   resources :events do
@@ -15,6 +18,9 @@ GrampianSpiderGroup::Application.routes.draw do
   resources :sessions, :only => [:new, :create, :destroy]
   
   resources :registrations, :only => [:create, :destroy]
+  
+  resources :records 
+
   
   root                      :to => 'pages#home'
   
@@ -35,6 +41,10 @@ GrampianSpiderGroup::Application.routes.draw do
   match  'events/show/:id', :to => 'events#show'
   
   match  'events/new',      :to => 'events#new'
+  
+  match 'records',           :to => 'records#index'
+  
+  match  'records/new',      :to => 'records#new'
   
 
   # The priority is based upon order of creation:

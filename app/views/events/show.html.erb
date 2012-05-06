@@ -8,12 +8,12 @@
 
 <p>
   <b>Date:</b>
-  <%= @event.date %>
+  <%= @event.date.strftime("%d %b %y") %>
 </p>
 
 <p>
   <b>Time:</b>
-  <%= @event.time %>
+  <%= @event.time.strftime("%H:%M") %>
 </p>
 
 <p>
@@ -41,5 +41,14 @@
 </p>
 
 <p>
-<%= link_to 'Back', events_path %>
+  
+  <% if current_user.admin? %>
+  <%= link_to 'edit', edit_event_path(@event) %>
+  | <%= link_to "delete", @event, :method => :delete, :confirm => "You sure?",
+                                :title => "Delete #{@event.location_name}"%>
+  <% end %>
+</p>
+
+<p>
+<%= link_to 'back', events_path %>
 </p>
