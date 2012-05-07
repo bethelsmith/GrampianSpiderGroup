@@ -9,8 +9,12 @@ class UsersController < ApplicationController
   end
   
   def index
+    @search = User.search do
+      fulltext params[:search]
+      paginate(:page => params[:page])
+    end
+    @users = @search.results
     @title = "All users"
-    @users = User.paginate(:page => params[:page])
   end
   
   def show

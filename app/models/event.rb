@@ -3,6 +3,7 @@ class Event < ActiveRecord::Base
   has_many    :reverse_registrations, :class_name => "Registration",
                                       :dependent => :destroy
   has_many    :attendees, :through => :reverse_registrations, :source => :user
+  default_scope :order => 'events.date DESC'
   
   attr_accessible :date, :time, :location_name, :location_description, :grid_ref, :event_description
   
@@ -17,6 +18,14 @@ class Event < ActiveRecord::Base
                             :length   => { :maximum => 14 },
                             :format   => { :with => grid_regex }
   
+  searchable do
+    text :location_name, :date_string
+  end
+  
+  def date_string
+    date.strftime("%d %b %y")
+  end
+  
   def title
     "#{location_name} - #{date.strftime("%d %b %y")}"
   end
@@ -28,5 +37,6 @@ class Event < ActiveRecord::Base
   def past
     errors.add("date", "is in the past") if date && past?
   end
+  
 
 end

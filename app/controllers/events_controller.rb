@@ -3,7 +3,11 @@ class EventsController < ApplicationController
   before_filter :admin_user,   :only => [:new, :edit, :update, :destroy]
   
   def index
-    @events = Event.paginate(:page => params[:page]).order( 'date DESC')
+    @search = Event.search do
+      fulltext params[:search]
+      paginate(:page => params[:page])
+    end
+    @events = @search.results
     @title = "All Events"
   end
 

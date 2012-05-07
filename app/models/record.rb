@@ -6,6 +6,7 @@ class Record < ActiveRecord::Base
   
   grid_regex = /^((([S]|[N])[A-HJ-Z])|(([T]|[O])[ABFGLMQRVW])|([H][L-Z])|([J][LMQRVW]))([0-9]{2})?([0-9]{2})?([0-9]{2})?([0-9]{2})?([0-9]{2})?$/
   
+  validate  :future
   validates :user_id,   :presence => true
   validates :date,      :presence => true
   validates :location,  :presence => true,
@@ -14,10 +15,28 @@ class Record < ActiveRecord::Base
                         :length   => { :maximum => 100 },
                         :format   => { :with => grid_regex }
 
-
+  searchable do
+    text :recorder, :species, :date_string, :location
+  end
+  
+  def recorder
+    user.name
+  end
+  
+  def date_string
+    date.strftime("%d %b %y")
+  end
  
   def title
     "#{user.name} - #{species} - #{date.strftime("%d %b %y")} - #{location} - #{grid_ref}"
+  end
+  
+  def future?
+    date > Date.today
+  end
+  
+  def future
+    errors.add("date", "is in the future") if date && future?
   end
 
 end

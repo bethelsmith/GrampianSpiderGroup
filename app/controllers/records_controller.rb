@@ -1,9 +1,13 @@
 class RecordsController < ApplicationController
   before_filter :authenticate, :except => [:show, :create]
   before_filter :authorized_user, :only => [:edit, :update, :destroy]
-
+  
   def index
-    @records= Record.paginate(:page => params[:page]).order( 'created_at DESC')
+    @search = Record.search do
+      fulltext params[:search]
+      paginate(:page => params[:page])
+    end
+    @records = @search.results
     @title = "All Records"
   end
   

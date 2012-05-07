@@ -55,4 +55,7 @@ group :production do
 end
 
 gem 'globalize3'
+
+gem 'sunspot_rails'
+gem 'sunspot_solr'
   
