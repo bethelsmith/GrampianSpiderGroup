@@ -1,14 +1,14 @@
 
-<h1>Grampian Spider Group</h1>
-<p>The Grampian Spider Group is a group of local spider enthusiasts dedicated to learning more about our 8-legged friends. We regularly go on field surveys to collect species records that help create a better understanding of the abundance and distribution of spider populations in the Grampian area. We also hold regular workshops to help develop skills in identifying species.</p>
+<h1><%=t ('home.h1') %></h1>
+<p><%=t ('home.p1') %></p>
 
 </br>
 
-<p><b>Please sign in to view events and create records</b></p>
+<p><b><%=t ('home.p2') %></b></p>
 
 </br>
 
-<%= link_to "Join Us!", signup_path, :class => "signup_button round" %>
+<%= link_to t('home.join us'), signup_path, :class => "signup_button round" %>
 
 </br></br>
 
@@ -16,11 +16,11 @@
 
 </br>
 
-<p>...PS we are also quite keen on harvestmen!</p>
+<p>...<%=t ('home.p3') %>!</p>
 
 </br></br>
 
-<p id= "BAS">Our activities are carried out in support of the British Arachnological Society (registered charity number 260346)</p>
+<p id= "BAS"><%=t ('home.p4') %> (<%=t ('home.charity no') %>)</p>
 
 
 

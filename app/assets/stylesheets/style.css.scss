@@ -29,7 +29,7 @@ div.content h3 {
     line-height: 30px;
 }
 
-div.content p {
+div.content p, div.language p {
     margin-left: 20px;
     font-family: Helvetica, Geneva, Arial, sans-serif;
     font-weight: normal;
@@ -53,24 +53,24 @@ div.content li {
     line-height: 30px;
 }
 
-div.content a {
+div.content a, .language{
     font-family: Helvetica, Geneva, Arial, sans-serif;
 }
 
-div.content a:link {
+div.content a:link,  .language:link {
     color: #5876c1;
     text-decoration:none;
 }
 
-div.content a:visited {
+div.content a:visited, .language:visited {
     color: #5876c1;
 }
 
-div.content a:hover {
+div.content a:hover, .language:hover {
     color: #000099;
 }
 
-div.content a:active {
+div.content a:active, .language:active {
     color: #000099;
 }
 
@@ -342,3 +342,13 @@ div.side {
     font-size: small;
     text-align: center;
 }
+
+div.language {
+    height: inherit;
+    width: auto;
+    float: right;
+    margin-right: 10px;
+
+}
+
+
