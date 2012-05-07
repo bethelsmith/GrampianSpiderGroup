@@ -8,7 +8,9 @@ describe Record do
       :date => Date.today,
       :species => "Arianella cucurbitina",
       :location => "Aberdeenshire",
-      :grid_ref => "NJ40"
+      :grid_ref => "NJ40",
+      :latitude => "57.087070",
+      :longitude => "-2.991625"
     }
   end
   
@@ -53,6 +55,14 @@ describe Record do
       
     it "should require a grid reference" do
       @user.records.build(:grid_ref => "").should_not be_valid
+    end
+    
+    it "should require a latitude" do
+      @user.records.build(:latitude => "").should_not be_valid
+    end
+  
+    it "should require a longitude" do
+      @user.records.build(:longitude => "").should_not be_valid
     end
     
     it "should reject comments that are too long" do

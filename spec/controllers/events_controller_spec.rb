@@ -5,6 +5,7 @@ describe EventsController do
   
    describe "GET 'index'" do
      
+     
     describe "for non-signed-in users" do
       
       it "should deny access" do
@@ -34,23 +35,6 @@ describe EventsController do
       it "should have the right title" do
         get :index
         response.should have_selector("title", :content => "All Events")
-      end
-
-      it "should have an element for each event" do
-        get :index
-        @events[0..2].each do |event|
-          response.should have_selector("li", :content => event.title)
-        end
-      end
-
-      it "should paginate events" do
-        get :index
-        response.should have_selector("div.pagination")
-        response.should have_selector("span.disabled", :content => "Previous")
-        response.should have_selector("a", :href => "/events?page=2",
-                                           :content => "2")
-        response.should have_selector("a", :href => "/events?page=2",
-                                           :content => "Next")
       end
     end
   end
@@ -119,7 +103,7 @@ describe EventsController do
   
       before(:each) do
         @attr = { :date => "", :time => "", :location_name => "",
-                  :grid_ref => "" }
+                  :grid_ref => "", :latitude => "", :longitude => "" }
       end
 
       it "should not create an event" do
@@ -138,7 +122,7 @@ describe EventsController do
 
       before(:each) do
         @attr = { :date => Date.today, :time => "10:00", :location_name => "test location",
-                  :grid_ref => "NJ40" }
+                  :grid_ref => "NJ40", :latitude => "57.087070", :longitude => "-2.991625" }
       end
 
       it "should create an event" do
@@ -186,7 +170,7 @@ describe EventsController do
 
       before(:each) do
         @attr = { :date => "", :time => "", :location_name => "",
-                  :grid_ref => "" }
+                  :grid_ref => "", :latitude => "", :longitude => "" }
       end
 
       it "should render the 'edit' page" do
@@ -204,7 +188,7 @@ describe EventsController do
 
       before(:each) do
         @attr = { :date => Date.today, :time => "10:00", :location_name => "Test location name",
-                  :grid_ref => "NJ40" }
+                  :grid_ref => "NJ40", :latitude => '57.087070', :longitude => '-2.991625' }
       end
 
       it "should change the event's attributes" do

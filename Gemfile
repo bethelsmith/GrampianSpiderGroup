@@ -58,5 +58,6 @@ gem 'globalize3'
 
 gem 'sunspot_rails'
 gem 'sunspot_solr'
+gem "sunspot_test"
   
 gem 'gmaps4rails'

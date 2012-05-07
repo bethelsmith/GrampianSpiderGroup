@@ -36,23 +36,6 @@ describe RecordsController do
         get :index
         response.should have_selector("title", :content => "All Records")
       end
-
-      it "should have an element for each record" do
-        get :index
-        @records[-2, 2].each do |record|
-          response.should have_selector("li", :content => record.title)
-        end
-      end
-
-      it "should paginate records" do
-        get :index
-        response.should have_selector("div.pagination")
-        response.should have_selector("span.disabled", :content => "Previous")
-        response.should have_selector("a", :href => "/records?page=2",
-                                           :content => "2")
-        response.should have_selector("a", :href => "/records?page=2",
-                                           :content => "Next")
-      end
     end
   end
    
@@ -105,7 +88,9 @@ describe RecordsController do
           :date => "",
           :species => "",
           :location => "",
-          :grid_ref => ""
+          :grid_ref => "",
+          :latitude => "",
+          :longitude => ""
         }
       end
 
@@ -128,7 +113,9 @@ describe RecordsController do
           :date => Date.today,
           :species => "Arianella cucurbitina",
           :location => "Aberdeenshire",
-          :grid_ref => "NJ40"
+          :grid_ref => "NJ40",
+          :latitude => "57.087070",
+          :longitude => "-2.991625"
         }
       end
 
@@ -201,7 +188,9 @@ describe RecordsController do
           :date => Date.today,
           :species => "Arianella cucurbitina",
           :location => "Aberdeenshire",
-          :grid_ref => "NJ40"
+          :grid_ref => "NJ40",
+          :latitude => "57.087070",
+          :longitude => "-2.991625"
         }
       end
 

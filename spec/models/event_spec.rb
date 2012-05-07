@@ -9,7 +9,9 @@ describe Event do
       :location_name => "Location",
       :location_description => "This is the location description.",
       :grid_ref => "NJ40",
-      :event_description => "This is the event description."
+      :event_description => "This is the event description.",
+      :latitude => "57.087070",
+      :longitude => "-2.991625"
     }
   end
   
@@ -37,6 +39,16 @@ describe Event do
     no_grid_ref_event.should_not be_valid
   end
   
+  it "should require a latitude" do
+    no_latitude_event = Event.new{@attr.merge(:latitude => "")}
+    no_latitude_event.should_not be_valid
+  end
+  
+  it "should require a longitude" do
+    no_longitude_event = Event.new{@attr.merge(:longitude => "")}
+    no_longitude_event.should_not be_valid
+  end
+  
   it "should reject location names that are too long" do
     long_location_name = "a" * 101
     long_location_name_event = Event.new{@attr.merge(:location_name => long_location_name)}
@@ -56,7 +68,7 @@ describe Event do
   
   
   it "should accept valid grid references" do
-    @event = Event.new(date: Date.today, time: "10:00", location_name: "test location")
+    @event = Event.new(date: Date.today, time: "10:00", location_name: "test location", latitude: "57.087070", longitude: "-2.991625")
     grids = %w[SH NP1234 OF1234567890]
     grids.each do |valid_grid|
       @event.grid_ref = valid_grid
@@ -65,7 +77,7 @@ describe Event do
   end
   
   it "should reject invalid grid references" do
-    @event = Event.new(date: Date.today, time: "10:00", location_name: "test location")
+    @event = Event.new(date: Date.today, time: "10:00", location_name: "test location", latitude: "57.087070", longitude: "-2.991625")
     grids = %w[SH123 SH12D NI1234 1234]
     grids.each do |invalid_grid|
       @event.grid_ref = invalid_grid

@@ -13,6 +13,8 @@ FactoryGirl.define do
     time                        "10:00"
     sequence(:location_name)   { |n| "Test Location #{n}"}
     grid_ref                    "NJ40"
+    latitude                    "57.087070"
+    longitude                   "-2.991625"
   end
   
 FactoryGirl.define do
@@ -22,6 +24,8 @@ FactoryGirl.define do
     species         "Arianella cucurbitina"
     location        "Aberdeenshire"
     grid_ref        "NJ40"
+    latitude        "57.087070"
+    longitude       "-2.991625"
   end
 end
   
