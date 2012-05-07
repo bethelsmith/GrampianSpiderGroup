@@ -35,10 +35,14 @@ def make_events
       time = "10:00"
       location_name  = "Test location - #{n+1}"
       grid_ref = "NJ40"
+      latitude = "57.087070"
+      longitude = "-2.991625"
       Event.create!(:date => date,
                    :time  => time,
                    :location_name => location_name,
-                   :grid_ref => grid_ref)
+                   :grid_ref => grid_ref,
+                   :latitude => latitude,
+                   :longitude => longitude)
   end
 end
 
@@ -63,7 +67,9 @@ def make_records
       user.records.create!(:date => Date.today,
           :species => "Arianella cucurbitina",
           :location => "Aberdeenshire",
-          :grid_ref => "NJ40")
+          :grid_ref => "NJ40",
+          :latitude => "57.087070",
+          :longitude => "-2.991625")
     end
   end
 end

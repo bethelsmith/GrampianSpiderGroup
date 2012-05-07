@@ -5,7 +5,9 @@ class Event < ActiveRecord::Base
   has_many    :attendees, :through => :reverse_registrations, :source => :user
   default_scope :order => 'events.date DESC'
   
-  attr_accessible :date, :time, :location_name, :location_description, :grid_ref, :event_description
+  attr_accessible :date, :time, :location_name, :location_description, :grid_ref, :event_description, :latitude, :longitude
+  
+  acts_as_gmappable :process_geocoding => false
   
   grid_regex = /^((([S]|[N])[A-HJ-Z])|(([T]|[O])[ABFGLMQRVW])|([H][L-Z])|([J][LMQRVW]))([0-9]{2})?([0-9]{2})?([0-9]{2})?([0-9]{2})?([0-9]{2})?$/
   
@@ -17,6 +19,8 @@ class Event < ActiveRecord::Base
   validates :grid_ref,      :presence => true,
                             :length   => { :maximum => 14 },
                             :format   => { :with => grid_regex }
+  validates :latitude,      :presence => true
+  validates :longitude,     :presence => true
   
   searchable do
     text :location_name, :date_string

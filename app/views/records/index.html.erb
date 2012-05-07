@@ -3,7 +3,7 @@
   <%= link_to 'Create a New Record', new_record_path %>
   <% end %>
 <p>
-
+  
 <h1>All Records</h1>
 <div class= "search"?
 <%= form_tag events_path, :method => :get do %>
@@ -16,6 +16,11 @@
   </div>
 </div>
 <% end %>
+
+<div class= "map">
+  <%= gmaps4rails(@json) %>
+</div>
+
 </br>
 <%= will_paginate %>
 

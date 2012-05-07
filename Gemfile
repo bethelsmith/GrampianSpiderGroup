@@ -59,3 +59,4 @@ gem 'globalize3'
 gem 'sunspot_rails'
 gem 'sunspot_solr'
   
+gem 'gmaps4rails'

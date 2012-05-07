@@ -9,6 +9,7 @@ class EventsController < ApplicationController
     end
     @events = @search.results
     @title = "All Events"
+    @json = Event.all.to_gmaps4rails
   end
 
   def new
@@ -19,6 +20,7 @@ class EventsController < ApplicationController
   def show
     @event = Event.find(params[:id])
     @title = @event.location_name
+    @json = @event.to_gmaps4rails
   end
   
   def edit

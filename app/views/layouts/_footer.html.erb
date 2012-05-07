@@ -1,9 +1,10 @@
 <div class="footer">
+  <%= yield :scripts %>
 </div> 
-  <div class= "language">
-  <p>
-  Languages: <%= link_to "English", url_for(:locale => 'en'), :class => "language" %>
-  | <%= link_to "Francais", url_for(:locale => 'fr'), :class => "language" %>
-  | <%= link_to "Espanol", url_for(:locale => 'es'), :class => "language" %>
-  </p>
-  </div>
+<div class= "language">
+<p>
+Languages: <%= link_to "English", url_for(:locale => 'en'), :class => "language" %>
+| <%= link_to "Francais", url_for(:locale => 'fr'), :class => "language" %>
+| <%= link_to "Espanol", url_for(:locale => 'es'), :class => "language" %>
+</p>
+</div>

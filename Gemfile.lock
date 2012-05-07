@@ -78,6 +78,7 @@ GEM
       activemodel (>= 3.0.0)
       activerecord (>= 3.0.0)
       paper_trail (~> 2)
+    gmaps4rails (1.5.1)
     hike (1.2.1)
     i18n (0.6.0)
     jquery-rails (1.0.19)
@@ -198,6 +199,7 @@ DEPENDENCIES
   factory_girl_rails
   faker (= 0.3.1)
   globalize3
+  gmaps4rails
   jquery-rails
   minitest
   pg

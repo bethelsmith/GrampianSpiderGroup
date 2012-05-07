@@ -9,6 +9,7 @@ class RecordsController < ApplicationController
     end
     @records = @search.results
     @title = "All Records"
+    @json = Record.all.to_gmaps4rails
   end
   
   def new
@@ -19,6 +20,7 @@ class RecordsController < ApplicationController
   def show
     @record = Record.find(params[:id])
     @title = @record.title
+    @json = @record.to_gmaps4rails
   end
   
   def edit

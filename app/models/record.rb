@@ -1,5 +1,7 @@
 class Record < ActiveRecord::Base
-  attr_accessible  :date, :species, :location, :grid_ref, :comments
+  attr_accessible  :date, :species, :location, :grid_ref, :comments, :latitude, :longitude
+  
+  acts_as_gmappable :process_geocoding => false
   
   belongs_to :user
   default_scope :order => 'records.created_at DESC'
@@ -14,7 +16,9 @@ class Record < ActiveRecord::Base
   validates :grid_ref,  :presence => true,
                         :length   => { :maximum => 100 },
                         :format   => { :with => grid_regex }
-
+  validates :latitude,  :presence => true
+  validates :longitude, :presence => true
+  
   searchable do
     text :recorder, :species, :date_string, :location
   end

@@ -2,6 +2,12 @@
   <%= @event.location_name %>
 </h1>
 
+<div class= "map">
+  <%= gmaps4rails(@json) %>
+</div>
+
+</br>
+
 <p>
   <%= render 'attend_form' if signed_in? %>
 </p>
@@ -29,6 +35,16 @@
 <p>
   <b>Grid Ref:</b>
   <%= @event.grid_ref %>
+</p>
+
+<p>
+  <b>Latitude:</b>
+  <%= @event.latitude %>
+</p>
+
+<p>
+  <b>Longitude:</b>
+  <%= @event.longitude %>
 </p>
 
 <p>
