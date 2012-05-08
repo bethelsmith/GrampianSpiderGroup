@@ -4,4 +4,6 @@ class Registration < ActiveRecord::Base
   
   validates :user_id, :presence => true
   validates :event_id, :presence => true
+  
+  attr_accessible :event_id
 end
