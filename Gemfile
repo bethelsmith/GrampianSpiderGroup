@@ -40,7 +40,6 @@ end
 group :development do
   gem 'sqlite3', '1.3.5'
   gem 'annotate', '2.4.0'
-  gem 'faker', '0.3.1'
 end
 
 group :test do
@@ -53,6 +52,8 @@ end
 group :production do
   gem 'pg'
 end
+
+gem 'faker', '0.3.1'
 
 gem 'globalize3'
 
