@@ -6,4 +6,3 @@ GrampianSpiderGroup::Application.initialize!
 
 require 'will_paginate'
 
-config.action_mailer.delivery_method = :smtp
